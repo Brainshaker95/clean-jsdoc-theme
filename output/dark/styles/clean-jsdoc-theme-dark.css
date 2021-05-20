@@ -236,21 +236,21 @@ table .params thead tr,
 
 /* code */
 .pln {
-    color: #ffdd4a;
+    color: #6089b4;
 }
 
 .str {
-    color: #56e39f;
+    color: #9aa83a;
 }
 
 /* a keyword */
 .kwd {
-    color: #08b2e3;
+    color: #9872a2;
 }
 
 /* a comment */
 .com {
-    color: #999;
+    color: #9a9b99;
 }
 
 /* a type name */
@@ -260,42 +260,42 @@ table .params thead tr,
 
 /* a literal value */
 .lit {
-    color: #f5d67b;
+    color: #9b0000;
 }
 
 /* punctuation */
 .pun {
-    color: #5adbff;
+    color: #ffffff;
 }
 
 /* lisp open bracket */
 .opn {
-    color: #72e0d1;
+    color: #ffffff;
 }
 
 /* lisp close bracket */
 .clo {
-    color: #72e0d1;
+    color: #ffffff;
 }
 
 /* a markup tag name */
 .tag {
-    color: #007bff;
+    color: #6089b4;
 }
 
 /* a markup attribute name */
 .atn {
-    color: #f5d67b;
+    color: #d0b344;
 }
 
 /* a markup attribute value */
 .atv {
-    color: #3e999f;
+    color: #9aa83a;
 }
 
 /* a declaration */
 .dec {
-    color: #f5871f;
+    color: #9a9b99;
 }
 
 /* a variable name */
@@ -305,7 +305,7 @@ table .params thead tr,
 
 /* a function name */
 .fun {
-    color: #4271ae;
+    color: #ce6700;
 }
 
 
