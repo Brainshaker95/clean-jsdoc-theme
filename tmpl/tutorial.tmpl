@@ -5,11 +5,11 @@
 </article>
 
 <?js if (children.length > 0) { ?>
-<div clas="table-of-contents">
+<div class="table-of-contents">
 
 <h2>Functions</h2>
 
-<ul class="tutorial-children"><?js
+<ul><?js
     var self = this;
     children.forEach(function(t) { ?>
     <li><?js= self.tutoriallink(t.name) ?></li>
