@@ -353,7 +353,19 @@ blockquote {
     overflow: auto;
 }
 
+.table-of-contents h2 {
+    margin-top: 2.5rem;
+}
 
+.table-of-contents ul {
+    margin-bottom: 2rem;
+    padding-left: 3rem;
+}
+
+.table-of-contents a {
+    display: inline-block;
+    padding: 0.25rem 0;
+}
 
 @media screen and (max-width: 50rem) {
 
