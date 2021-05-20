@@ -536,7 +536,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                         var first = name[0];
                         var last = name[1];
 
-                        name = first + ' &rtrif; ' + last;
+                        name = first + (last ? ' &rtrif; ' + last : '');
 
                         if (haveSearch) {
                             searchListArray.push(JSON.stringify({
