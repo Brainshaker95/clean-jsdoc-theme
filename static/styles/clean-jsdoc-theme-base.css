@@ -217,6 +217,7 @@
 
 .sidebar-main-content {
     margin: 1rem;
+    padding-right: 1rem;
     overflow: auto;
 }
 
@@ -260,6 +261,14 @@
 
 .accordion-list:not(:first-of-type) {
   margin-top: -0.5rem;
+}
+
+.accordion-list:not(:first-of-type) {
+    margin-top: -0.5rem;
+}
+
+.accordion + .accordion-list {
+    margin: 0 !important;
 }
 
 .accordion-list a {
@@ -448,10 +457,15 @@ h3.external-links + ul {
 }
 
 h4.name {
-    margin: 1rem 0 1.5rem;
+    margin: 3rem 0 1.5rem;
     color: #CE6700;
 }
 
 h4.name .signature {
     color: #6089b4;
+}
+
+.subsection-title {
+    margin-bottom: -1.5rem;
+    border-bottom: 0;
 }
