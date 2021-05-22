@@ -25,11 +25,15 @@
             activeLine.classList.add('active');
 
             activeLine.parentElement.parentElement.childNodes.forEach((childNode) => {
-                if (childNode.nodeType === Node.TEXT_NODE && childNode.trim()) {
+                if (childNode.nodeType === Node.TEXT_NODE) {
+                    if (!childNode.textContent.trim()) {
+                        return;
+                    }
+
                     const span = document.createElement('span');
 
                     childNode.after(span);
-                    span.appendChild(childNode.trim());
+                    span.appendChild(childNode);
                     span.classList.add('token');
                     span.classList.add('default');
                 }

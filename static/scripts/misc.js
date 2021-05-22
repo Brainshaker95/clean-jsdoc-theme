@@ -1,4 +1,6 @@
 /* global document */
+/* global Prism */
+
 var accordionLocalStorageKey = 'accordion-id';
 
 // eslint-disable-next-line no-undef
@@ -29,13 +31,32 @@ function showTooltip(id) {
 }
 
 /* eslint-disable-next-line */
+function rainbowBracesFunction(toggle, id)  {
+    if (toggle) {
+        showTooltip('rb-tooltip-' + id);
+
+        if (localStorage.getItem('rainbow-braces') === 'active') {
+            localStorage.setItem('rainbow-braces', 'inactive');
+        } else {
+            localStorage.setItem('rainbow-braces', 'active');
+        }
+    }
+
+    document.querySelectorAll('pre').forEach((pre) => {
+        pre.classList.toggle('rainbow-braces', localStorage.getItem('rainbow-braces') === 'active');
+    });
+
+    Prism.highlightAll();
+}
+
+/* eslint-disable-next-line */
 function copyFunction(id) {
     // selecting the pre element
     var code = document.getElementById(id);
 
     // selecting the code block
     var element = code.querySelector('code');
- 
+
     // copy
     copy(element.innerText);
 
@@ -47,33 +68,47 @@ function copyFunction(id) {
     // capturing all pre element on the page
     var allPre = document.getElementsByTagName('pre');
 
-
-    var i, classList;
+    var i, classList, pre;
 
     for ( i = 0; i < allPre.length; i++) {
+        pre = allPre[i];
         // get the list of class in current pre element
         classList = allPre[i].classList;
         var id = 'pre-id-' + i;
 
-        // tooltip
-        var tooltip = '<div class="tooltip" id="tooltip-' + id + '">Copied!</div>';
+        // tooltips
+        var tooltip = '<div class="tooltip" id="tooltip-' + id + '">Copied</div>';
+        var rainbowBracestooltip = '<div class="tooltip" id="rb-tooltip-' + id + '">Rainbow braces toggled!</div>';
+
+        // template of toggle rainbow braces icon container
+        var rainbowBraces = '<div class="icon-container" onclick="rainbowBracesFunction(true, \'' + id + '\')"><div><svg class="sm-icon" alt="click to toggle rainbow braces"><use xlink:href="#brush-icon"></use></svg>' + rainbowBracestooltip + '</div></div>';
 
         // template of copy to clipboard icon container
-        var copyToClipboard = '<div class="code-copy-icon-container" onclick="copyFunction(\'' + id + '\')"><div><svg class="sm-icon" alt="click to copy"><use xlink:href="#copy-icon"></use></svg>' + tooltip + '<div></div>';
+        var copyToClipboard = '<div class="icon-container" onclick="copyFunction(\'' + id + '\')"><div><svg class="sm-icon" alt="click to copy"><use xlink:href="#copy-icon"></use></svg>' + tooltip + '</div></div>';
 
         // extract the code language
         var langName = classList[classList.length - 1].split('-')[1];
 
         if ( langName === undefined ) { langName = 'JavaScript'; }
 
-        // if(langName != undefined)
         var langNameDiv = '<div class="code-lang-name-container"><div class="code-lang-name">' + langName.toLocaleUpperCase() + '</div></div>';
-        // else langNameDiv = '';
+
+        if (!pre.classList.contains('match-braces')) {
+            pre.classList.add('match-braces');
+        }
 
         // appending everything to the current pre element
-        allPre[i].innerHTML += '<div class="pre-top-bar-container">' + langNameDiv + copyToClipboard + '</div>';
-        allPre[i].setAttribute('id', id);
+        pre.innerHTML += '<div class="pre-top-bar-container">' +
+            langNameDiv +
+            '<div class="flex">' +
+            rainbowBraces +
+            copyToClipboard +
+            '</div></div>';
+
+        pre.setAttribute('id', id);
     }
+
+    rainbowBracesFunction();
 
     const constructorTutorialItem = document.querySelector('#constructor-tutorial');
 
