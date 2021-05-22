@@ -75,6 +75,12 @@ function copyFunction(id) {
         allPre[i].setAttribute('id', id);
     }
 
+    const constructorTutorialItem = document.querySelector('#constructor-tutorial');
+
+    if (constructorTutorialItem) {
+        constructorTutorialItem.parentElement.prepend(constructorTutorialItem);
+    }
+
     const tutorialContent = document.querySelector('.tutorial-content');
 
     if (!tutorialContent) {

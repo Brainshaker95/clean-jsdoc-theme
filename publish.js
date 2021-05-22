@@ -485,7 +485,7 @@ function search() {
 }
 
 
-function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
+function buildMemberNav(items, itemHeading, itemsSeen, linktoFn, isTutorials) {
     var nav = '';
 
     if (items.length) {
@@ -510,13 +510,17 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                  */
                 var accordionId = (methods.length) ? Math.floor(Math.random() * 10000000) : '""';
 
+                var linkTitle = linktoFn(item.longname, item.name.replace(/^module:/, ''));
+
+                if (isTutorials && item.title === 'Constructor') {
+                    accordionId = 'constructor-tutorial';
+                }
+
                 itemsNav += '<li class=' +
                     accordionClassName +
                     ' id=' +
                     accordionId +
                     '>';
-
-                var linkTitle = linktoFn(item.longname, item.name.replace(/^module:/, ''));
 
                 if (methods.length) {
                     itemsNav += '<div class="accordion-heading child">' +
@@ -526,7 +530,6 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                 } else {
                     itemsNav += linkTitle;
                 }
-
 
                 if (haveSearch) {
                     searchListArray.push(JSON.stringify({
