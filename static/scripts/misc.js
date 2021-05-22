@@ -33,14 +33,9 @@ function copyFunction(id) {
     // selecting the pre element
     var code = document.getElementById(id);
 
-    // selecting the ol.linenums
-    var element = code.querySelector('.linenums');
-
-    if (!element) {
-        // selecting the code block
-        element = code.querySelector('code');
-    }
-
+    // selecting the code block
+    var element = code.querySelector('code');
+ 
     // copy
     copy(element.innerText);
 
@@ -79,6 +74,21 @@ function copyFunction(id) {
         allPre[i].innerHTML += '<div class="pre-top-bar-container">' + langNameDiv + copyToClipboard + '</div>';
         allPre[i].setAttribute('id', id);
     }
+
+    const tutorialContent = document.querySelector('.tutorial-content');
+
+    if (!tutorialContent) {
+        return;
+    }
+
+    const headlines = tutorialContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    headlines.forEach((headline) => {
+        headline.setAttribute(
+            'id',
+            headline.textContent.toLowerCase().replace(' ', '-')
+        );
+    });
 })();
 
 

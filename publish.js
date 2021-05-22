@@ -112,7 +112,7 @@ function getSignatureAttributes(item) {
     var attributes = [];
 
     if (item.optional) {
-        attributes.push('opt');
+        attributes.push('?');
     }
 
     if (item.nullable === true) {
@@ -134,8 +134,11 @@ function updateItemName(item) {
     }
 
     if (attributes && attributes.length) {
-        itemName = util.format( '%s<span class="signature-attributes">%s</span>', itemName,
-            attributes.join(', ') );
+        itemName = util.format(
+            '<span class="signature-attributes">%s</span>%s',
+            attributes.join(', '),
+            itemName
+        );
     }
 
     return itemName;
@@ -182,7 +185,11 @@ function addNonParamAttributes(items) {
 function addSignatureParams(f) {
     var params = f.params ? addParamAttributes(f.params) : [];
 
-    f.signature = util.format( '%s(%s)', (f.signature || ''), params.join(', ') );
+    f.signature = util.format(
+        '%s<span class="signature-bracket">(</span>%s<span class="signature-bracket">)</span>',
+        (f.signature || ''),
+        params.join(', ')
+    );
 }
 
 function addSignatureReturns(f) {
@@ -336,7 +343,7 @@ function attachModuleSymbols(doclets, modules) {
 }
 
 function buildMenuNav(menu) {
-    var m = '<ul>';
+    var m = '<h3 class="external-links">External links</h3><ul>';
 
     menu.forEach(function(item) {
         // Setting default value for optional parameter
@@ -458,7 +465,7 @@ function getMetaTagData() {
 }
 
 function getTheme() {
-    var theme = themeOpts.theme || 'light';
+    var theme = 'dark';
     var baseThemeName = 'clean-jsdoc-theme';
     var themeSrc = `${baseThemeName}-${theme}.css`.trim();
 
@@ -613,11 +620,8 @@ function buildNav(members) {
     nav += '<div class="sidebar-main-content" id="sidebar-main-content">';
     var seen = {};
     var seenTutorials = {};
-
     var menu = (themeOpts.menu) || undefined;
 
-
-    if (menu !== undefined) { nav += buildMenuNav(menu); }
     nav += buildMemberNav(members.tutorials, 'Tutorials', seenTutorials, linktoTutorial, true);
     nav += buildMemberNav(members.classes, 'Classes', seen, linkto);
     nav += buildMemberNav(members.modules, 'Modules', {}, linkto);
@@ -627,6 +631,10 @@ function buildNav(members) {
     nav += buildMemberNav(members.mixins, 'Mixins', seen, linkto);
     nav += buildMemberNav(members.interfaces, 'Interfaces', seen, linkto);
     nav += buildMemberNav(members.globals, 'Global', seen, linkto);
+
+    if (menu !== undefined) {
+        nav += buildMenuNav(menu);
+    }
 
     nav += '</div>';
 
@@ -911,7 +919,6 @@ exports.publish = function(taffyData, opts, tutorials) {
         }
     });
 
-    // TODO: move the tutorial functions to templateHelper.js
     function generateTutorial(title, tutorial, filename) {
         var tutorialData = {
             title: title,

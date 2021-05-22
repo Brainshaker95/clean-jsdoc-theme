@@ -14,7 +14,7 @@
         <p class="code-caption"><?js= example.caption ?></p>
     <?js } ?>
     <div class="rel">
-    <pre class="prettyprint"><code><?js= self.htmlsafe(example.code) ?></code></pre>
+    <pre><code class=\"match-braces rainbow-braces\"><?js= self.htmlsafe(example.code) ?></code></pre>
     
     <?js 
         if(enable_for.findIndex(function (val) { return val === "examples"}) !== -1) { 

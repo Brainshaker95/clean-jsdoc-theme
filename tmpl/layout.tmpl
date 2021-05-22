@@ -64,7 +64,7 @@
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prism.css">
     <link type="text/css" rel="stylesheet" href="styles/reset.css">
     <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
     <link type="text/css" rel="stylesheet" href="styles/<?js= this.theme ?>">
@@ -76,7 +76,7 @@
     <?js= this.partial('icons.tmpl') ?>
   </head>
 
-  <body>
+  <body class="line-numbers">
 
     <nav class="navbar" id="navbar">
       <?js= this.nav ?>
@@ -113,13 +113,9 @@
       <?js= this.footer ?>
     </footer>
 
-    <script src="scripts/third-party/prettify.js"></script>
-    <script src="scripts/third-party/lang-css.js"></script>
+    <script src="scripts/third-party/prism.js"></script>
     <script type="text/javascript" src="scripts/misc.js"></script>
-
-    <script>prettyPrint();</script>
-    <script src="scripts/linenumber.js"></script>
-    <script src="scripts/fix-code-block.js"></script>
+    <script type="text/javascript" src="scripts/line-number-rows.js"></script>
     <script src="scripts/fix-navbar.js"></script>
     <?js if(!Boolean(this.search.options)) { ?>
       <script src="scripts/search.js"></script>
@@ -154,9 +150,9 @@
     <?js if(this.overlayScrollbar != undefined ) { ?>
     <script type="text/javascript">
     var option = JSON.parse('<?js=this.overlayScrollbar ?>')
-      console.log(option)
       document.addEventListener("DOMContentLoaded", function () {
         OverlayScrollbars(document.querySelectorAll('body'), option.option || {});
+        OverlayScrollbars(document.querySelectorAll('.sidebar-main-content'), option.option || {});
       });
     </script>
     <?js } ?>

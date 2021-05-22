@@ -1,11 +1,11 @@
 <section>
 
-<article>
+<article class="tutorial-content">
     <?js= content ?>
 </article>
 
 <?js if (children.length > 0) { ?>
-<div class="table-of-contents">
+<article class="table-of-contents">
 
 <h2>Functions</h2>
 
@@ -15,7 +15,7 @@
     <li><?js= self.tutoriallink(t.name) ?></li>
 <?js }); ?></ul>
 
-</div>
+</article>
 <?js } ?>
 
 </section>

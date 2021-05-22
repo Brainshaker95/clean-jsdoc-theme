@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'code';
-    src: url('../fonts/MavenPro-Regular.ttf') format('truetype');
+    src: url('../fonts/FiraCode-Regular.ttf') format('truetype');
 }
 
 /*
@@ -146,7 +146,7 @@
 
 .navbar-heading {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 2rem 1rem;
 }
 
@@ -258,8 +258,13 @@
     transform: rotate(180deg);
 }
 
-.accordion-list {
-    margin: 0.5rem 1rem;
+.accordion-list:not(:first-of-type) {
+  margin-top: -0.5rem;
+}
+
+.accordion-list a {
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
 .accordion-heading.child {
@@ -267,8 +272,13 @@
 
 }
 
-.accordion [data-type=method] {
-    margin: 0.5rem 1rem;
+.accordion [data-type=method]:not(:first-of-type) {
+    margin-top: -0.5rem;
+}
+
+.accordion [data-type=method] a {
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
 
@@ -281,14 +291,22 @@
     margin: 0;
 }
 
-
-.menu-li {
-    margin: 1rem 0;
+.menu-li:not(:first-of-type) {
+    margin-top: -0.5rem;
 }
 
+.menu-li a {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.menu-li a:active {
+    color: #fff;
+}
 
 pre {
     position: relative;
+    padding-top: 3.5em !important;
 }
 
 .pre-top-bar-container {
@@ -324,7 +342,7 @@ pre {
 }
 
 .code-lang-name {
-    font-family: 'code';
+    font-family: 'code' !important;
     font-size: 12px;
 }
 
@@ -359,12 +377,38 @@ blockquote {
 
 .table-of-contents ul {
     margin-bottom: 2rem;
-    padding-left: 3rem;
+}
+
+.table-of-contents ul li {
+    padding: 0;
 }
 
 .table-of-contents a {
     display: inline-block;
     padding: 0.25rem 0;
+}
+
+.method-member-container:not(.flex-col) {
+    border-bottom: 1px solid;
+    margin-bottom: 3rem;
+}
+
+.description h6 {
+    margin-top: 1.5rem;
+    margin-left: 0;
+    font-size: 1em;
+}
+
+h3.external-links {
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid;
+}
+
+h3.external-links + ul {
+    margin: 1rem 0;
+    list-style-type: none;
+    background-color: #1E1E1E;
 }
 
 @media screen and (max-width: 50rem) {
@@ -397,9 +441,17 @@ blockquote {
     .method-member-container {
         overflow: auto;
     }
-    
 }
 
 .rel {
     position: relative;
+}
+
+h4.name {
+    margin: 1rem 0 1.5rem;
+    color: #CE6700;
+}
+
+h4.name .signature {
+    color: #6089b4;
 }
