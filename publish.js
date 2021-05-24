@@ -9,6 +9,7 @@ var taffy = require('taffydb').taffy;
 var template = require('jsdoc/template');
 var util = require('util');
 var fse = require('fs-extra');
+var seedrandom = require('seedrandom');
 
 var htmlsafe = helper.htmlsafe;
 var linkto = helper.linkto;
@@ -491,7 +492,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn, isTutorials) {
     if (items.length) {
         var itemsNav = '';
 
-        items.forEach(function(item) {
+        items.forEach(function(item, index) {
             var methods = find({kind: 'function',
                 memberof: item.longname});
 
@@ -506,9 +507,15 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn, isTutorials) {
                 var accordionClassName = (methods.length) ? '"accordion collapsed child"' : '"accordion-list"';
 
                 /**
-                 * Id give to accordion.
+                 * Id to give to accordion.
                  */
-                var accordionId = (methods.length) ? Math.floor(Math.random() * 10000000) : '""';
+                var accordionId;
+
+                if (themeOpts.accordion_id_seed) {
+                    accordionId = Math.abs(seedrandom(themeOpts.accordion_id_seed + index).int32());
+                } else {
+                    accordionId = (methods.length) ? Math.floor(Math.random() * 10000000) : '""';
+                }
 
                 var linkTitle = linktoFn(item.longname, item.name.replace(/^module:/, ''));
 
@@ -567,8 +574,16 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn, isTutorials) {
         });
 
         if (itemsNav !== '') {
+            var accordionId;
+
+            if (themeOpts.accordion_id_seed) {
+                accordionId = Math.abs(seedrandom(themeOpts.accordion_id_seed + 'itemsNav').int32());
+            } else {
+                accordionId = Math.floor(Math.random() * 10000000);
+            }
+
             nav += '<div class="accordion collapsed" id="' +
-                Math.floor(Math.random() * 10000000) +
+                accordionId +
                 '" > <h3 class="accordion-heading">' +
                 itemHeading + '<svg><use xlink:href="#down-icon"></use></svg>' +
                 '</h3><ul class="accordion-content">' +
