@@ -9,7 +9,7 @@ body {
 
 a,
 a:active {
-    color: #00d738;
+    color: #00ae2d;
 }
 
 hr {
@@ -217,7 +217,7 @@ blockquote {
 }
 
 code {
-    background: #2f2f2f;
+    background: #000;
     color: #fff;
 }
 

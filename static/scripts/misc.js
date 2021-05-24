@@ -64,7 +64,19 @@ function copyFunction(id) {
     showTooltip('tooltip-' + id);
 }
 
+function removeCallbackLinksFromNav() {
+    document.querySelectorAll('.accordion-list').forEach((item) => {
+        const link = item.firstChild;
+
+        if (link.href.indexOf('Callback') > -1) {
+            item.remove();
+        }
+    });
+}
+
 (function() {
+    removeCallbackLinksFromNav();
+
     // capturing all pre element on the page
     var allPre = document.getElementsByTagName('pre');
 

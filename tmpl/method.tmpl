@@ -49,7 +49,7 @@ var self = this;
 <?js } ?>
 
 <?js if (data.params && params.length) { ?>
-    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+    <div class="method-member-container flex-col w-100 overflow-auto mt-20">
         <strong>Parameters:</strong>
         <?js= this.partial('params.tmpl', params) ?>
     </div>
@@ -58,7 +58,7 @@ var self = this;
 <?js= this.partial('details.tmpl', data) ?>
 
 <?js if (data.kind !== 'module' && data.requires && data.requires.length) { ?>
-    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+    <div class="method-member-container flex-col w-100 overflow-auto mt-20">
         <strong>Requires:</strong>
         <ul>
             <?js data.requires.forEach(function(r) { ?>
@@ -69,7 +69,7 @@ var self = this;
 <?js } ?>
 
 <?js if (data.fires && fires.length) { ?>
-    <div class="method-member-container flex w-100 overflow-auto mt-20">
+    <div class="method-member-container w-100 overflow-auto mt-20">
         <strong>Fires:</strong>
             <ul>
                 <?js fires.forEach(function(f) { ?>
@@ -80,7 +80,7 @@ var self = this;
 <?js } ?>
 
 <?js if (data.listens && listens.length) { ?>
-    <div class="method-member-container flex w-100 overflow-auto mt-20">
+    <div class="method-member-container w-100 overflow-auto mt-20">
         <strong>Listens to Events:</strong>
         <ul>
             <?js listens.forEach(function(f) { ?>
@@ -133,7 +133,7 @@ var self = this;
 <?js } ?>
 
 <?js if (data.examples && examples.length) { ?>
-    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+    <div class="method-member-container flex-col w-100 overflow-auto mt-20">
         <strong>Example<?js= examples.length > 1? 's':'' ?></strong>
         <?js= this.partial('examples.tmpl', examples) ?>
     </div>

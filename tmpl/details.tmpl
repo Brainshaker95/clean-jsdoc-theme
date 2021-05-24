@@ -26,7 +26,7 @@ var detailsKeys = [
 
 // Check if the default value is an object or array; if so, apply code highlighting
 if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvaluetype === 'array')) {
-    data.defaultvalue = "<pre><code class=\"match-braces rainbow-braces\">" + data.defaultvalue + "</code></pre>";
+    data.defaultvalue = "<pre><code class=\"match-braces\">" + data.defaultvalue + "</code></pre>";
     defaultObjectClass = ' class="object-value"';
 }
 
@@ -45,7 +45,7 @@ for(; loopVar < detailsKeys.length; loopVar += 1) {
     if (properties && properties.length && properties.forEach) {
 ?>
 
-    <h5 class="subsection-title">Properties</h5>
+    <h3 class="subsection-title">Properties</h3>
 
     <?js= this.partial('properties.tmpl', data) ?>
 

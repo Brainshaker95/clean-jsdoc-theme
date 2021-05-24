@@ -27,7 +27,11 @@
     */
     margin-left: 18.75rem;
     overflow-x: auto;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem 1rem;
+}
+
+.version {
+    margin-top: auto;
 }
 
 .flex {
@@ -224,6 +228,11 @@
     overflow: auto;
 }
 
+.sidebar-main-content .os-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .accordion {
     margin: 1rem 0;
 }
@@ -319,6 +328,7 @@
 pre {
     position: relative;
     padding-top: 3.5em !important;
+    line-height: 23px !important; 
 }
 
 .pre-top-bar-container {
@@ -326,7 +336,7 @@ pre {
     display: flex;
     justify-content: space-between;
     left: 0;
-    padding: 0.3125rem 1.5rem;
+    padding: 0.4rem 1.5rem;
     position: absolute;
     right: 0;
     top: 0;
@@ -472,4 +482,8 @@ h4.name .signature {
 .subsection-title {
     margin-bottom: -1.5rem;
     border-bottom: 0;
+}
+
+.subsection-title + .allow-overflow {
+    margin-top: 2rem;
 }

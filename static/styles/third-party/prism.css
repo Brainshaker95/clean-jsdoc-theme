@@ -89,6 +89,7 @@ pre.language-js,
 .token.constant,
 .token.symbol,
 .token.deleted,
+.language-js .token.class-name,
 .language-css .token.color {
 	color: #C7444A;
 }

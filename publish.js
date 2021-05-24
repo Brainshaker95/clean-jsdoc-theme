@@ -624,8 +624,8 @@ function buildNav(members) {
     var seen = {};
     var seenTutorials = {};
     var menu = (themeOpts.menu) || undefined;
+    var version = (themeOpts.version) || undefined;
 
-    nav += buildMemberNav(members.tutorials, 'Tutorials', seenTutorials, linktoTutorial, true);
     nav += buildMemberNav(members.classes, 'Classes', seen, linkto);
     nav += buildMemberNav(members.modules, 'Modules', {}, linkto);
     nav += buildMemberNav(members.externals, 'Externals', seen, linktoExternal);
@@ -633,10 +633,15 @@ function buildNav(members) {
     nav += buildMemberNav(members.namespaces, 'Namespaces', seen, linkto);
     nav += buildMemberNav(members.mixins, 'Mixins', seen, linkto);
     nav += buildMemberNav(members.interfaces, 'Interfaces', seen, linkto);
+    nav += buildMemberNav(members.tutorials, 'Tutorials', seenTutorials, linktoTutorial, true);
     nav += buildMemberNav(members.globals, 'Global', seen, linkto);
 
     if (menu !== undefined) {
         nav += buildMenuNav(menu);
+    }
+
+    if (version !== undefined) {
+        nav += '<small class="version">Version: ' + version + '</small>';
     }
 
     nav += '</div>';
